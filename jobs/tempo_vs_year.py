@@ -82,6 +82,20 @@ for x, y in result_iterator(results):
 
 print xs
 print ys
-fig = plt.figure(figsize=(5,5))
+
+fig = plt.figure(figsize=(10, 8))
+ax = fig.add_subplot(111)
+z = np.polyfit(xs, ys, 4)
+p = np.poly1d(z)
+plt.plot(xs, p(xs), "r--")
 plt.scatter(xs, ys)
-fig.savefig("tempo_vs_energy.png")
+
+
+ax.annotate('Disco happened', xy=(1972, 130), xytext=(1980, 140),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            )
+
+fig.suptitle("Average Song Tempo by Year")
+plt.xlabel("Year")
+plt.ylabel("Tempo (beats per minute)")
+fig.savefig("tempo_vs_year.png")
