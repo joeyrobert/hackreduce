@@ -23,5 +23,5 @@ for file in files:
         working_attributes.append(attribute)
     #print working_attributes
     wr.writerow(info)
+    h5.close()
 
-h5.close()
