@@ -51,7 +51,7 @@ def map(line, params):
     recordReader = csv.reader(output, delimiter=',', quotechar='"')
     for line in recordReader:
         x = int(line[lookup['get_year']])
-        y = float(line[lookup['get_tempo']])
+        y = float(line[lookup['get_duration']])
         if x != 0:
             yield x, y
 
@@ -91,15 +91,11 @@ plt.plot(xs, p(xs), "r--")
 plt.scatter(xs, ys)
 
 
-ax.annotate('Disco happened', xy=(1972, 130), xytext=(1980, 140),
+ax.annotate('LSD', xy=(1966, 235), xytext=(1956, 225),
             arrowprops=dict(facecolor='black', shrink=0.05),
             )
 
-ax.annotate('The Great Depression', xy=(1938, 40), xytext=(1946, 50),
-            arrowprops=dict(facecolor='black', shrink=0.05),
-            )
-
-fig.suptitle("Average Song Tempo by Year")
+fig.suptitle("Average Song Length by Year")
 plt.xlabel("Year")
-plt.ylabel("Tempo (beats per minute)")
-fig.savefig("tempo_vs_year.png")
+plt.ylabel("Song Length (seconds)")
+fig.savefig("song_length_vs_year.png")
