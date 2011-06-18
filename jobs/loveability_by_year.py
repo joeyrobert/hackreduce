@@ -34,6 +34,12 @@ results = disco.new_job(name="song-titles",
                         save=True).wait()
 print "Job done. Results:"
 
+chart_url = "http://chart.apis.google.com/chart?chxr=0,0,15&chxt=y&chbh=a,4,10&chs=738x220&cht=bvs&chco=4D89F9&chds=0,15&chd=t:"
+res_list = []
 # Print result to user
 for year, titles in result_iterator(results):
-    print year, titles
+    res_list.append(str(titles))
+
+chart_url += ",".join(res_list)
+chart_url += "&chdl=Songs+with+%22Love%22+in+their+titles&chtt=Most+Romantic+Year+by+Song+Titles"
+print chart_url
